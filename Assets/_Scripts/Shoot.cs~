@@ -1,69 +1,91 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Shoot : MonoBehaviour {
 
+  public Slider VisualAmmoBar;
+  public Slider SpecialAttackBar;
   public AudioClip shootSound;
   public GameObject spawnPoint;
   public GameObject bulletPF;
   public GameObject Character;
-  public GameObject DangerZone;
+  private GameObject DangerZone;
   private GameObject projectile;
-  public bool isLaserState = false;
-  public int ammo = 1000;
+  public bool isSomeState = false;
+  public int ammo = 120;
+  public int special = 0;
   float shootForce = 99;
   float fireRate = 0.07f;
   float timer = 0;
 
-  void LaserFire(){
+  void Fire(){
 
-    audio.PlayOneShot(shootSound);
+    if (ammo > 0)
+    {
 
-    RaycastHit hit;
+      audio.PlayOneShot(shootSound);
 
-    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);//straight ray to mouse position
-    //Ray ray = Camera.main.ScreenPointToRay( new Vector2(Screen.width/2, Screen.height/2));
+      RaycastHit hit;
 
-    Vector3 aimPoint;//hit point placeholder
+      Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);//straight ray to mouse position
+      //Ray ray = Camera.main.ScreenPointToRay( new Vector2(Screen.width/2, Screen.height/2));
 
-    if (Physics.Raycast(ray, out hit, 100)){//where the ray hits, so draw from anywhere to THIS = raycast from new THAT 
+      Vector3 aimPoint;//hit point placeholder
 
-      aimPoint = hit.point;
+      if (Physics.Raycast(ray, out hit, 100))
+      {//where the ray hits, so draw from anywhere to THIS = raycast from new THAT 
 
-    } else {                                        //if  ray doesn't hit anything, just make a point 100 units out into ray, to referece
+        aimPoint = hit.point;
 
-      aimPoint = ray.origin + (ray.direction * 100);//aimPoint is some point 100 unitys into ray line
+      }
+      else
+      {                                        //if  ray doesn't hit anything, just make a point 100 units out into ray, to referece
+
+        aimPoint = ray.origin + (ray.direction * 100);//aimPoint is some point 100 unitys into ray line
+
+      }
+
+      projectile = Instantiate(bulletPF, spawnPoint.transform.position, spawnPoint.transform.rotation) as GameObject;
+
+      projectile.transform.LookAt(aimPoint);          //fixes when hit point was = (0,0,0);
+
+      Debug.DrawLine(spawnPoint.transform.position, aimPoint);
+
+      Physics.IgnoreCollision(projectile.collider, Character.collider);
+
+      projectile.rigidbody.velocity = projectile.transform.forward * shootForce;//this plus the LookAt aimpoint sends a bullet on the correct ray
+
+      timer = 0;
+
+      ammo--;
 
     }
-
-    projectile = Instantiate( bulletPF, spawnPoint.transform.position, spawnPoint.transform.rotation) as GameObject;
-
-    projectile.transform.LookAt(aimPoint);          //fixes when hit point was = (0,0,0);
-
-    Debug.DrawLine(spawnPoint.transform.position, aimPoint);
-
-    Physics.IgnoreCollision(projectile.collider, Character.collider);
-
-    projectile.rigidbody.velocity = projectile.transform.forward * shootForce;//this plus the LookAt aimpoint sends a bullet on the correct ray
-
-    timer = 0;
-
-    ammo--;
 
   }
 
   void Update() {
 
+    if (VisualAmmoBar != null)
+      VisualAmmoBar.value = ammo;
+
+    if (SpecialAttackBar!= null)
+      SpecialAttackBar.value = special;
+
+    if (special >= 100)
+    {
+      ammo += (120-ammo);//refill ammo
+      special = 0;
+    }
+
     timer += Time.deltaTime;
 
-        if(Input.GetMouseButton(0) && (timer > fireRate)){
+    if(Input.GetMouseButton(0) && (timer > fireRate)){
 
-          LaserFire();
+      Fire();
 
-        }// END OF LASERSTATE SHOOTING
+    }
 
-
-
-  }//end of Update
+  }//end update
 
 }//end of class

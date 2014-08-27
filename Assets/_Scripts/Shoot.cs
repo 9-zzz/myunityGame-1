@@ -75,7 +75,7 @@ public class Shoot : MonoBehaviour {
     if (special >= 100)
     {
       ammo += (120-ammo);//refill ammo
-      special = 0;
+      //bar's color
     }
 
     timer += Time.deltaTime;

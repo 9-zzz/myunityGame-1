@@ -47,8 +47,11 @@ public class swordSlash : MonoBehaviour
   
   void OnTriggerEnter(Collider other)
   {
-  if(other.CompareTag("EnemyBullet"))
-    audio.PlayOneShot(swordClang);
+    if(other.CompareTag("EnemyBullet"))
+    {
+      audio.PlayOneShot(swordClang);
+      Destroy(other);
+    }
   }
 
 }
