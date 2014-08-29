@@ -18,6 +18,7 @@ public class Shoot : MonoBehaviour {
   float shootForce = 99;
   float fireRate = 0.07f;
   float timer = 0;
+  float RTVal;
 
   void Fire(){
 
@@ -65,6 +66,8 @@ public class Shoot : MonoBehaviour {
   }
 
   void Update() {
+  
+    RTVal = Input.GetAxis("RightTrigger");
 
     if (VisualAmmoBar != null)
       VisualAmmoBar.value = ammo;
@@ -80,7 +83,9 @@ public class Shoot : MonoBehaviour {
 
     timer += Time.deltaTime;
 
-    if(Input.GetMouseButton(0) && (timer > fireRate)){
+    if (Input.GetButton("Fire1") && (timer > fireRate) ||
+      ((RTVal > 0) && (timer > fireRate)))
+    {
 
       Fire();
 

@@ -16,7 +16,7 @@ public class Melee : MonoBehaviour
     swordOffset2 = transform.TransformPoint(new Vector3(3, 0, 0));
     //swordOffset = transform.TransformPoint(Vector3.right * 3);
 
-    if (Input.GetMouseButtonDown(1))
+    if (Input.GetMouseButtonDown(1) || Input.GetButtonDown("Fire3"))
     {
       //(Instantiate(Sword, swordOffset, Quaternion.Euler(-45,90,270)) as GameObject).transform.parent = transform;
       //swordInst = Instantiate(Sword, swordOffset, transform.localRotation) as GameObject;
@@ -26,7 +26,7 @@ public class Melee : MonoBehaviour
 
     }
 
-    if (Input.GetMouseButtonDown(2))
+    if (Input.GetMouseButtonDown(2) || Input.GetButtonDown("Fire2"))
     {
       //(Instantiate(Sword, swordOffset, Quaternion.Euler(-45,90,270)) as GameObject).transform.parent = transform;
       //swordInst = Instantiate(Sword, swordOffset, transform.localRotation) as GameObject;

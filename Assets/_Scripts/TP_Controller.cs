@@ -17,10 +17,10 @@ public class TP_Controller : MonoBehaviour
   // Update is called once per frame
   void Update() 
   {
+    if (Input.GetKeyDown("r") || Input.GetButtonDown("Back")) Application.LoadLevel(Application.loadedLevel);
 
-    if(Camera.main == null)
+    if (Camera.main == null)
       return;
-
 
     GetMovementInput();
     HandleActionInput();//called in every update as long as camera exists
@@ -31,7 +31,7 @@ public class TP_Controller : MonoBehaviour
 
   void GetMovementInput()
   {
-    var deadZone = 0.1f;
+    var deadZone = 0.001f;
 
     TP_Motor.Instance.VerticalVelocity = TP_Motor.Instance.MoveVector.y;
     TP_Motor.Instance.MoveVector = Vector3.zero;

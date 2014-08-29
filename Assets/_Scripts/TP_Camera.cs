@@ -14,6 +14,10 @@ public class TP_Camera : MonoBehaviour
   public float DistanceResumeSmooth = 1f;
   public float X_MouseSensitivity = 5f;
   public float Y_MouseSensitivity = 5f;
+
+  public float X_StickSensitivity = 2.5f;
+  public float Y_StickSensitivity = 2.5f;
+
   public float MouseWheelSensitivity = 5f;
   public float X_Smooth = 0.05f;
   public float Y_Smooth = 0.1f;
@@ -75,8 +79,13 @@ public class TP_Camera : MonoBehaviour
     //if (Input.GetMouseButton(0))
     //{
     // The LMB is down get mouse Axis input
+
     mouseX += Input.GetAxis("Mouse X") * X_MouseSensitivity;
     mouseY -= Input.GetAxis("Mouse Y") * Y_MouseSensitivity;
+
+    mouseX += (Input.GetAxis("RightStickHorizontal") * X_StickSensitivity);
+    mouseY += (Input.GetAxis("RightStickVertical") * Y_StickSensitivity);
+
     //}
 
     // This is where we're going to clamp mouse rotation limit, normalize y
@@ -90,6 +99,15 @@ public class TP_Camera : MonoBehaviour
       preOccludedDistance = desiredDistance;
       distanceSmooth = DistanceSmooth;//normal distance smooth
     }
+
+    if (Input.GetAxis("DpadV")!= 0)
+    {
+      desiredDistance = Mathf.Clamp(Distance - Input.GetAxis("DpadV") * MouseWheelSensitivity,
+            DistanceMin, DistanceMax);
+      preOccludedDistance = desiredDistance;
+      distanceSmooth = DistanceSmooth;//normal distance smooth
+    }
+
   }
 
   void CalculateDesiredPosition()

@@ -51,7 +51,6 @@ public class TP_Motor : MonoBehaviour
 
   public void UpdateMotor()
   {
-
     if (playerHealth <= 0)
       Application.LoadLevel(Application.loadedLevel);
 
@@ -69,8 +68,6 @@ public class TP_Motor : MonoBehaviour
 
     if (TP_Controller.CharacterController.isGrounded)
       numOfJumps = 3;
-
-   
 
     //Debug.Log("number of jumps left: " + numOfJumps);
   }
@@ -197,7 +194,7 @@ public class TP_Motor : MonoBehaviour
 
       case TP_Animator.Direction.Forward:
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) || (Input.GetButton("Dash")))
         {
           moveSpeed = doDash(ForwardSpeed);
         }
@@ -211,7 +208,7 @@ public class TP_Motor : MonoBehaviour
 
       case TP_Animator.Direction.Backward:
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) || (Input.GetButton("Dash")))
         {
           moveSpeed = doDash(BackwardSpeed);
         }
@@ -226,7 +223,7 @@ public class TP_Motor : MonoBehaviour
 
       case TP_Animator.Direction.Left:
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) || (Input.GetButton("Dash")))
         {
           moveSpeed = doDash(StrafingSpeed);
         }
@@ -241,7 +238,7 @@ public class TP_Motor : MonoBehaviour
 
       case TP_Animator.Direction.Right:
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) || (Input.GetButton("Dash")))
         {
           moveSpeed = doDash(StrafingSpeed);
         }
@@ -255,7 +252,8 @@ public class TP_Motor : MonoBehaviour
         break;
 
       case TP_Animator.Direction.LeftForward:
-        if (Input.GetKey(KeyCode.LeftShift))
+
+        if (Input.GetKey(KeyCode.LeftShift) || (Input.GetButton("Dash")))
         {
           moveSpeed = doDash(ForwardSpeed);
         }
@@ -268,7 +266,8 @@ public class TP_Motor : MonoBehaviour
         break;
 
       case TP_Animator.Direction.RightForward:
-        if (Input.GetKey(KeyCode.LeftShift))
+
+        if (Input.GetKey(KeyCode.LeftShift) || (Input.GetButton("Dash")))
         {
           moveSpeed = doDash(ForwardSpeed);
         }
@@ -282,7 +281,8 @@ public class TP_Motor : MonoBehaviour
 
 
       case TP_Animator.Direction.LeftBackward:
-        if (Input.GetKey(KeyCode.LeftShift))
+
+        if (Input.GetKey(KeyCode.LeftShift) || (Input.GetButton("Dash")))
         {
           moveSpeed = doDash(BackwardSpeed);
         }
@@ -295,7 +295,8 @@ public class TP_Motor : MonoBehaviour
         break;
 
       case TP_Animator.Direction.RightBackward:
-        if (Input.GetKey(KeyCode.LeftShift))
+
+        if (Input.GetKey(KeyCode.LeftShift) || (Input.GetButton("Dash")))
         {
           moveSpeed = doDash(BackwardSpeed);
         }
@@ -374,6 +375,7 @@ public class TP_Motor : MonoBehaviour
     {
       iTween.ShakePosition(gameObject, iTween.Hash("x", 0.5f, "y", 0.5f, "z", 0.5f, "time", 0.25f));
       playerHealth -= 5;
+      GameObject.Find("Player").GetComponent<SendingPositiveVibes>().highVibration ++;
     }
   }
 

@@ -16,9 +16,6 @@ public class HexEnemyScript : MonoBehaviour
 
   void Start()
   {
-//        Shoot inst = accessToPlayer.GetComponent<Shoot>();
-//        inst.special += 2;
-    Debug.Log("this is " + GameObject.Find("spawnPoint"));
   }
 
   void Update()
