@@ -15,7 +15,7 @@ public class SendingPositiveVibes : MonoBehaviour
 
   void Start()
   {
-    speed = 1;
+    speed = 0.25f;
   }
 
   // Update is called once per frame.

@@ -24,6 +24,7 @@ public class Shoot : MonoBehaviour {
 
     if (ammo > 0)
     {
+      GameObject.Find("Player").GetComponent<SendingPositiveVibes>().highVibration++;
 
       audio.PlayOneShot(shootSound);
 

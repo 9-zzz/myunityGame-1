@@ -152,6 +152,9 @@ public class TP_Motor : MonoBehaviour
   {
     if (numOfJumps > 0)
     {
+      GameObject.Find("Player").GetComponent<SendingPositiveVibes>().lowVibration = 1;
+      GameObject.Find("Player").GetComponent<SendingPositiveVibes>().highVibration++;
+
       numOfJumps--;
 
       if (numOfJumps <= 1)
