@@ -15,6 +15,8 @@ public class ShowTriggerValue : MonoBehaviour
   public double Vstick;
   public double RHstick;
   public double RVstick;
+  public double RstickPress;
+  public bool RstickPressB;
 
   void Awake()
   {
@@ -35,6 +37,9 @@ public class ShowTriggerValue : MonoBehaviour
     RHstick = System.Math.Round((Input.GetAxis("RightStickHorizontal")), 5);
     RVstick = System.Math.Round((Input.GetAxis("RightStickVertical")), 5);
 
+    RstickPress = System.Math.Round((Input.GetAxis("RightStickPress")), 5);
+    RstickPressB = Input.GetButton("RightStickPress");
+
 
     text.text =
       "Left Trigger Value = " + value +
@@ -44,7 +49,9 @@ public class ShowTriggerValue : MonoBehaviour
       "\nH stick Value = " + Hstick +
       "\nV stick Value = " + Vstick +
       "\nRight H stick Value = " + RHstick +
-      "\nRight V stick Value = " + RVstick;
+      "\nRight V stick Value = " + RVstick +
+      "\nRight Press stick Value = " + RstickPress +
+      "\nRight Press stick B-Value = " + RstickPressB;
   }
 
 }

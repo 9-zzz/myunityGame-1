@@ -382,4 +382,15 @@ public class TP_Motor : MonoBehaviour
     }
   }
 
+  void OnControllerColliderHit(ControllerColliderHit hit)
+  {
+    if (hit.transform.tag == "ammodrop")
+    {
+      GameObject.Find("spawnPoint").GetComponent<Shoot>().ammo += 20;
+
+      if (hit.gameObject != null)
+        Destroy(hit.gameObject);
+    }
+  }
+
 }//End of class

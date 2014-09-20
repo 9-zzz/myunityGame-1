@@ -13,12 +13,21 @@ public class Shoot : MonoBehaviour {
   private GameObject DangerZone;
   private GameObject projectile;
   public bool isSomeState = false;
+  public bool fullSpecial = false;
   public int ammo = 120;
   public int special = 0;
   float shootForce = 99;
   float fireRate = 0.07f;
   float timer = 0;
   float RTVal;
+
+  void fireSpecialAttack()
+  {
+    //instantiate;
+    special = 0;
+
+
+  }
 
   void Fire(){
 
@@ -66,8 +75,9 @@ public class Shoot : MonoBehaviour {
 
   }
 
-  void Update() {
-  
+  void Update() 
+  {
+
     RTVal = Input.GetAxis("RightTrigger");
 
     if (VisualAmmoBar != null)
@@ -79,13 +89,15 @@ public class Shoot : MonoBehaviour {
     if (special >= 100)
     {
       ammo += (120-ammo);//refill ammo
+      fullSpecial = true;
       //bar's color
     }
+
 
     timer += Time.deltaTime;
 
     if (Input.GetButton("Fire1") && (timer > fireRate) ||
-      ((RTVal > 0) && (timer < RTVal)))
+        ((RTVal > 0) && (timer > fireRate)))
     {
 
       Fire();

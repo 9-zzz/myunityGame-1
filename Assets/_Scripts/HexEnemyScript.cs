@@ -73,7 +73,6 @@ public class HexEnemyScript : MonoBehaviour
         rigidbody.AddRelativeForce(new Vector3(0, 0, -2000));
       }
 
-
       if (other.CompareTag("Player"))
       {
         AudioSource.PlayClipAtPoint(hexsDeath, transform.position);
@@ -82,6 +81,12 @@ public class HexEnemyScript : MonoBehaviour
       }
 
       if (other.CompareTag("sword"))
+      {
+        callDeathExplosion();
+        Destroy(gameObject);
+      }
+
+      if (other.gameObject.tag == "specialbeam")
       {
         callDeathExplosion();
         Destroy(gameObject);

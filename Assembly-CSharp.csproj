@@ -74,8 +74,10 @@
      <Compile Include="Assets\_Scripts\ModifyDashBar.cs" />
      <Compile Include="Assets\_Scripts\PlatFloat.cs" />
      <Compile Include="Assets\_Scripts\PlayerHealth.cs" />
+     <Compile Include="Assets\_Scripts\ReplenishAmmo.cs" />
      <Compile Include="Assets\_Scripts\RestartNow.cs" />
      <Compile Include="Assets\_Scripts\SendingPositiveVibes.cs" />
+     <Compile Include="Assets\_Scripts\SetColorOfSpecialBar.cs" />
      <Compile Include="Assets\_Scripts\Shoot.cs" />
      <Compile Include="Assets\_Scripts\StopVibes.cs" />
      <Compile Include="Assets\_Scripts\TP_Animator.cs" />
@@ -92,7 +94,10 @@
      <Compile Include="Assets\_Scripts\newCrosshair.cs" />
      <Compile Include="Assets\_Scripts\oldcrosshair.cs" />
      <Compile Include="Assets\_Scripts\platformiTween.cs" />
+     <Compile Include="Assets\_Scripts\quadBody.cs" />
+     <Compile Include="Assets\_Scripts\quadHead.cs" />
      <Compile Include="Assets\_Scripts\ringrot.cs" />
+     <Compile Include="Assets\_Scripts\specialBeamMesh.cs" />
      <Compile Include="Assets\_Scripts\swordSlash.cs" />
      <Compile Include="Assets\_Scripts\tobiasAi.cs" />
      <Compile Include="Assets\_Scripts\toonOutLineAccess.cs" />
