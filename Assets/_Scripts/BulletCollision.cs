@@ -7,8 +7,9 @@ public class BulletCollision : MonoBehaviour {
   public bool didCollide = false;
   public GameObject DoNotExplodeOn;
   // Use this for initialization
-  void Start () {
-
+  void Start()
+  {
+  Physics.IgnoreCollision(GameObject.FindGameObjectWithTag("pickupcol").GetComponent<Collider>(), collider);
   }
    void bulletExplode() {
           ParticleSystem explosionInstance = Instantiate(explosionPF, 

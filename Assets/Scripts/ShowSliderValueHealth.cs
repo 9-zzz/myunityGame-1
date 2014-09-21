@@ -10,6 +10,6 @@ public class ShowSliderValueHealth : MonoBehaviour
 		Text lbl = GetComponent<Text>();
 		if (lbl != null)
 			//lbl.text = Mathf.RoundToInt (value * 100) + "";
-			lbl.text = "HEALTH";
+			lbl.text = "HP";
 	}
 }

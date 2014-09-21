@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\KeepScore.cs" />
      <Compile Include="Assets\Pixelplacement\iTweenPath\iTweenPath.cs" />
      <Compile Include="Assets\Scripts\AppendCharacter.cs" />
      <Compile Include="Assets\Scripts\ChangeColor.cs" />
@@ -53,6 +54,7 @@
      <Compile Include="Assets\Scripts\PrismEffect.cs" />
      <Compile Include="Assets\Scripts\ScrollDetailTexture.cs" />
      <Compile Include="Assets\Scripts\ShowAmmoLabel.cs" />
+     <Compile Include="Assets\Scripts\ShowScoreValue.cs" />
      <Compile Include="Assets\Scripts\ShowSliderValue.cs" />
      <Compile Include="Assets\Scripts\ShowSliderValueAmmo.cs" />
      <Compile Include="Assets\Scripts\ShowSliderValueHealth.cs" />
@@ -72,6 +74,7 @@
      <Compile Include="Assets\_Scripts\LarsAi.cs" />
      <Compile Include="Assets\_Scripts\Melee.cs" />
      <Compile Include="Assets\_Scripts\ModifyDashBar.cs" />
+     <Compile Include="Assets\_Scripts\PickupCollisions.cs" />
      <Compile Include="Assets\_Scripts\PlatFloat.cs" />
      <Compile Include="Assets\_Scripts\PlayerHealth.cs" />
      <Compile Include="Assets\_Scripts\ReplenishAmmo.cs" />

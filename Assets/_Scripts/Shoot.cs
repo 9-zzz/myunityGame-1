@@ -125,20 +125,20 @@ public class Shoot : MonoBehaviour
       Fire();
     }
 
-    if ((Input.GetKey("x") || Input.GetButton("RightStickPress")) && special > 0)
+    if ((Input.GetKey("x") || Input.GetButton("RightStickPress")) && special > 0.01)
     {
       if (specialBeam != null && specialBeam.transform.localScale.z < 50)
       {
 
         TP_Motor.Instance.MoveVector = new Vector3(0, 0, 0);
         audio.PlayOneShot(shootSpecialSound);
-        specialBeam.transform.localScale += new Vector3(0.2f, 0.2f, 0.75f);
+        specialBeam.transform.localScale += new Vector3(0.4f, 0.4f, 1f);
         iTween.ShakePosition(specialBeam, iTween.Hash("x", 0.5f, "y", 0.5f, "z", 0.5f, "time", 0.5f));
       }
     }
     else if (specialBeam != null && specialBeam.transform.localScale.y >= 0)
     {
-      specialBeam.transform.localScale -= new Vector3(0.2f, 0.2f, 0.75f);
+      specialBeam.transform.localScale -= new Vector3(0.4f, 0.4f, 0f);
       iTween.ShakePosition(specialBeam, iTween.Hash("x", 0.1f, "y", 0.1f, "z", 0.1f, "time", 0.25f));
 
       if (specialBeam != null && specialBeam.transform.localScale.y <= 0)

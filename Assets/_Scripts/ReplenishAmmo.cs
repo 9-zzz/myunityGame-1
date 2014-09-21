@@ -4,25 +4,22 @@ using System.Collections;
 public class ReplenishAmmo : MonoBehaviour
 {
 
+
   // Use this for initialization
   void Start()
   {
-
+  Physics.IgnoreCollision(GameObject.FindGameObjectWithTag("Player").GetComponent<Collider>(), collider);
   }
 
   // Update is called once per frame
   void Update()
   {
+    float distance = Vector3.Distance(transform.position, GameObject.Find("Player").transform.position);
 
-  }
-
-  void OnCollisionEnter(Collision col)
-  {//for enemy itself not bullets
-    if (col.gameObject.name == "Player")
+    if (distance < 30)
     {
-      Debug.Log("HIT AMMO DROP!!!    ");
-      GameObject.Find("spawnPoint").GetComponent<Shoot>().ammo += 20;
-      Destroy(gameObject);
+    transform.LookAt(GameObject.Find("Player").transform.position);
+    rigidbody.AddRelativeForce(new Vector3(0, 20, 150));
     }
   }
 

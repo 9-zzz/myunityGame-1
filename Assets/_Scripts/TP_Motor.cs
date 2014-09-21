@@ -378,19 +378,11 @@ public class TP_Motor : MonoBehaviour
     {
       iTween.ShakePosition(gameObject, iTween.Hash("x", 0.5f, "y", 0.5f, "z", 0.5f, "time", 0.25f));
       playerHealth -= 5;
-      GameObject.Find("Player").GetComponent<SendingPositiveVibes>().highVibration ++;
+      GameObject.Find("Player").GetComponent<SendingPositiveVibes>().highVibration++;
     }
+
   }
 
-  void OnControllerColliderHit(ControllerColliderHit hit)
-  {
-    if (hit.transform.tag == "ammodrop")
-    {
-      GameObject.Find("spawnPoint").GetComponent<Shoot>().ammo += 20;
-
-      if (hit.gameObject != null)
-        Destroy(hit.gameObject);
-    }
-  }
+  //void OnControllerColliderHit(ControllerColliderHit hit) { }
 
 }//End of class
