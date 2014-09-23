@@ -6,16 +6,27 @@ public class hexrotateysrot : MonoBehaviour {
   GameObject player;
   public float distance;
   public bool doLoop = false;
+
   void Start()
   {
     player = GameObject.FindGameObjectWithTag("Player");
     distance = Vector3.Distance(transform.position, player.transform.position);
   }
+
   void Update()
   {
-    distance = Vector3.Distance(transform.position, player.transform.position);
-    Vector3 euler = transform.localEulerAngles;
-    euler.z += (rotationsPerSecond * (distance / 20) * 360f * Time.deltaTime);
-    transform.localEulerAngles = euler;
+    if (transform.parent.GetComponent<HexEnemyScript>().Activated)
+    {
+      distance = Vector3.Distance(transform.position, player.transform.position);
+
+      Vector3 euler = transform.localEulerAngles;
+
+      euler.z += (rotationsPerSecond * (800 / distance) * Time.deltaTime);
+
+      Debug.Log("this is rot " + euler.z);
+
+      transform.localEulerAngles = euler;
+    }
   }
+
 }

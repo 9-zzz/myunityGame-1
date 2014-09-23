@@ -3,6 +3,9 @@ using System.Collections;
 
 public class ReplenishAmmo : MonoBehaviour
 {
+  bool hasSeenPlayer = false;
+  float upForce = 20;
+
   // Use this for initialization
   void Start()
   {
@@ -18,10 +21,16 @@ public class ReplenishAmmo : MonoBehaviour
     var distance = Vector3.Distance(transform.position, GameObject.Find("Player").transform.position);
 
     if (distance < 30)
+      hasSeenPlayer = true;
+
+    if (hasSeenPlayer)
     {
       transform.LookAt(GameObject.Find("Player").transform.position);
-      rigidbody.AddRelativeForce(new Vector3(0, 20, 150));
+      rigidbody.AddRelativeForce(new Vector3(0, upForce, 150));
+      transform.Translate(Vector3.forward * (Time.deltaTime * 25), Space.Self);
+      upForce /= 2f;
     }
+
   }
 
 }
