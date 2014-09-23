@@ -8,7 +8,7 @@ public class TP_Motor : MonoBehaviour
   public static TP_Motor Instance;
 
   private Color myColor;
-  private float dashBar = 100;
+  public float dashBar = 100;
   public static int playerHealth;
   public float dashRechargeRate = 0.5f;
   private bool currentlyDashing = false;

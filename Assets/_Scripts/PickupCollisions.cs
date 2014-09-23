@@ -5,7 +5,9 @@ public class PickupCollisions : MonoBehaviour
 {
 
   public AudioClip ammoPickUpSound;
+  public AudioClip dashPickUpSound;
   public ParticleSystem ammoPUParticles;
+  public ParticleSystem dashPUParticles;
 
   // Use this for initialization
   void Start()
@@ -15,12 +17,15 @@ public class PickupCollisions : MonoBehaviour
 
   void ammoFX(Vector3 position)
   {
-    ParticleSystem explInstance = Instantiate(ammoPUParticles,
-          position,
-          transform.rotation) as ParticleSystem;
-    Destroy(explInstance, 2);
+    ParticleSystem explInstance = Instantiate(ammoPUParticles, position, transform.rotation) as ParticleSystem;
+    Destroy(explInstance, 1);
   }
 
+  void dashFX(Vector3 position)
+  {
+    ParticleSystem dashFXInstance = Instantiate(dashPUParticles, position, transform.rotation) as ParticleSystem;
+    Destroy(dashFXInstance, 5);
+  }
 
   // Update is called once per frame
   void Update()
@@ -32,14 +37,24 @@ public class PickupCollisions : MonoBehaviour
   {
     if (other.CompareTag("ammodrop"))
     {
+      GameObject.Find("Player").GetComponent<SendingPositiveVibes>().lowVibration++;
       audio.PlayOneShot(ammoPickUpSound);
       ammoFX(other.gameObject.transform.position);
       GameObject.Find("spawnPoint").GetComponent<Shoot>().ammo += 10;
       GameObject.Find("Score").GetComponent<ShowScoreValue>().score2 += 2;
       Destroy(other.gameObject);
     }
-  }
 
+    if (other.CompareTag("dashPick"))
+    {
+      GameObject.Find("Player").GetComponent<SendingPositiveVibes>().lowVibration++;
+      audio.PlayOneShot(dashPickUpSound);
+      dashFX(other.gameObject.transform.position);
+      GameObject.Find("Player").GetComponent<TP_Motor>().dashBar += 30;
+      GameObject.Find("Player").GetComponent<TP_Motor>().numOfJumps+= 2;
+      Destroy(other.gameObject);
+    }
+  }
 
   /*void OnCollisionEnter(Collision collision)
   {

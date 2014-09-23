@@ -29,13 +29,10 @@ public class SendingPositiveVibes : MonoBehaviour
 
     if ((highVibration > 0) || (lowVibration > 0))
     {
-
       highVibration = Mathf.Lerp(highVibration, 0, time); //Lerp to zero, stop at zero.
 
       lowVibration = Mathf.Lerp(lowVibration, 0, time); //Lerp to zero, stop at zero.
-
     }
-
   }
 
 }

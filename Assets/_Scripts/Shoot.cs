@@ -19,7 +19,7 @@ public class Shoot : MonoBehaviour
   private GameObject specialBeam;
   public bool isSomeState = false;
   public bool fullSpecial = false;
-  public bool firedSpecial = false;
+  public bool firingSpecial = false;
   public int ammo = 120;
   public float special = 0;
   float shootForce = 99;
@@ -30,7 +30,7 @@ public class Shoot : MonoBehaviour
 
   void fireSpecialAttack()
   {
-    firedSpecial = true;
+    firingSpecial = true;
 
     specialBeam = Instantiate(specialBeamPF, spawnPoint.transform.position, spawnPoint.transform.rotation) as GameObject;
     specialBeam.transform.Rotate(90, 0, 0);
@@ -120,7 +120,7 @@ public class Shoot : MonoBehaviour
 
     timer += Time.deltaTime;
 
-    if (Input.GetButton("Fire1") && (timer > fireRate) || ((RTVal > 0) && (timer > fireRate)))
+    if (Input.GetButton("Fire1") && (timer > fireRate) || ((RTVal > 0) && (timer > fireRate)) && !firingSpecial)
     {
       Fire();
     }
@@ -152,14 +152,14 @@ public class Shoot : MonoBehaviour
       fullSpecial = false;
     }
 
-    if (firedSpecial)
+    if (firingSpecial)
     {
       mixPar += Time.deltaTime * 0.5f;
       special = Mathf.Lerp(special, 0, mixPar);
 
       if (special == 0)
       {
-        firedSpecial = false;
+        firingSpecial = false;
         mixPar = 0;
       }
     }

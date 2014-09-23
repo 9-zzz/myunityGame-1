@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class tobiasAi : MonoBehaviour
 {
@@ -7,13 +8,24 @@ public class tobiasAi : MonoBehaviour
   public GameObject ammoPickupPF;
   GameObject ammoPickup;
   Color dangerColor;
+  public Text onScreenInfo;
+
+  void OnMouseEnter()
+  {
+    onScreenInfo.text = "SPECIES: TOBIAS SQUANCHILIUS\n\n\"Hi! I'm harmless and fun to shoot! Shooting me boosts your special attack bar!\nI can only be destroyed by your special attack.\"";
+    onScreenInfo.CrossFadeAlpha(1, 1, true);
+  }
+
+  void OnMouseExit()
+  {
+    onScreenInfo.CrossFadeAlpha(0, 1, true);
+  }
 
   void Update()
   {
-    dangerColor = new Color(Random.Range(0.0f, 1.0f), 0.0f, 0.0f);//rgb
-
     if (hitwithbeam)
     {
+      dangerColor = new Color(Random.Range(0.0f, 1.0f), 0.0f, 0.0f);//rgb
       iTween.ShakePosition(gameObject, iTween.Hash("x", 1f, "y", 0.3f, "z", 4f, "time", 0.25f));
       transform.localScale -= new Vector3(0.01f, 0.01f, 0.01f);
       renderer.material.SetColor("_OutlineColor", dangerColor);
@@ -40,11 +52,11 @@ public class tobiasAi : MonoBehaviour
     if (other.gameObject.tag == "specialbeam")
     {
       hitwithbeam = true;
-      StartCoroutine("Example");
+      StartCoroutine(DeathSequence());
     }
   }
 
-  IEnumerator Example()
+  IEnumerator DeathSequence()
   {
     shootOutAmmo();
     shootOutAmmo();

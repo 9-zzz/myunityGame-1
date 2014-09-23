@@ -46,7 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\KeepScore.cs" />
      <Compile Include="Assets\Pixelplacement\iTweenPath\iTweenPath.cs" />
      <Compile Include="Assets\Scripts\AppendCharacter.cs" />
      <Compile Include="Assets\Scripts\ChangeColor.cs" />
@@ -83,12 +82,14 @@
      <Compile Include="Assets\_Scripts\SetColorOfSpecialBar.cs" />
      <Compile Include="Assets\_Scripts\Shoot.cs" />
      <Compile Include="Assets\_Scripts\StopVibes.cs" />
+     <Compile Include="Assets\_Scripts\StrangeGooDialogue.cs" />
      <Compile Include="Assets\_Scripts\TP_Animator.cs" />
      <Compile Include="Assets\_Scripts\TP_Camera.cs" />
      <Compile Include="Assets\_Scripts\TP_Controller.cs" />
      <Compile Include="Assets\_Scripts\TP_Motor.cs" />
      <Compile Include="Assets\_Scripts\autoDestroyJsphere.cs" />
      <Compile Include="Assets\_Scripts\dashBar.cs" />
+     <Compile Include="Assets\_Scripts\dashPickUp.cs" />
      <Compile Include="Assets\_Scripts\enemysBulletCollision.cs" />
      <Compile Include="Assets\_Scripts\haloFloatSpin.cs" />
      <Compile Include="Assets\_Scripts\healthBar.cs" />
@@ -109,6 +110,7 @@
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />
      <None Include="Assets\Standard Assets\Projectors\Sources\Shaders\Projector Multiply.shader" />
      <None Include="Assets\XInputDotNet\MITLicense.txt" />
+     <None Include="Assets\_Todo\New Text Document.txt" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-BasicOutline.shader" />
