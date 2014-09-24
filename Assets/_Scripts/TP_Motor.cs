@@ -9,7 +9,7 @@ public class TP_Motor : MonoBehaviour
 
   private Color myColor;
   public float dashBar = 100;
-  public static int playerHealth;
+  public int playerHealth;
   public float dashRechargeRate = 0.5f;
   private bool currentlyDashing = false;
   public AudioClip dashSound;
@@ -36,7 +36,7 @@ public class TP_Motor : MonoBehaviour
   public float VerticalVelocity { get; set; }
 
   public bool Infinity_Jump = false;
-  public int numOfJumps = 2;
+  public int numOfJumps;
 
   void Awake()
   {
@@ -122,7 +122,7 @@ public class TP_Motor : MonoBehaviour
     //cast from 0,1,0 to 0,-1,0 and put out into hitInfo
     if (Physics.Raycast(transform.position + Vector3.up, Vector3.down, out hitInfo))
     {
-      //Debug.DrawLine(transform.position + Vector3.up, Vector3.down);
+      Debug.DrawLine(transform.position + Vector3.up, Vector3.down);
 
       if (hitInfo.normal.y < SlideThreshold)
         slideDirection = new Vector3(hitInfo.normal.x, -hitInfo.normal.y, hitInfo.normal.z);

@@ -10,9 +10,10 @@ public class tobiasAi : MonoBehaviour
   Color dangerColor;
   public Text onScreenInfo;
 
-  void OnMouseEnter()
+  void OnMouseOver()
   {
-    onScreenInfo.text = "SPECIES: TOBIAS SQUANCHILIUS\n\n\"Hi! I'm harmless and fun to shoot! Shooting me boosts your special attack bar!\nI can only be destroyed by your special attack.\"";
+    //onScreenInfo.text = "SPECIES: TOBIAS SQUANCHILIUS\n\n\"Hi! I'm harmless and fun to shoot! Shooting me boosts your special attack bar!\nI can only be destroyed by your special attack.\"";
+    onScreenInfo.text = "TOBIAN";
     onScreenInfo.CrossFadeAlpha(1, 1, true);
   }
 

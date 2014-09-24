@@ -15,7 +15,7 @@ public class dashPickUp: MonoBehaviour
   void Update()
   {
 
-    if (transform.position.y < -200)
+    if (transform.position.y < -800)
       Destroy(gameObject);
 
     float distance = Vector3.Distance(transform.position, GameObject.Find("Player").transform.position);

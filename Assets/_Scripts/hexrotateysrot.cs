@@ -21,9 +21,9 @@ public class hexrotateysrot : MonoBehaviour {
 
       Vector3 euler = transform.localEulerAngles;
 
-      euler.z += (rotationsPerSecond * (800 / distance) * Time.deltaTime);
+      euler.z += (rotationsPerSecond * (800 / distance) * 360f * Time.deltaTime);
 
-      Debug.Log("this is rot " + euler.z);
+      //Debug.Log("this is rot " + euler.z);
 
       transform.localEulerAngles = euler;
     }

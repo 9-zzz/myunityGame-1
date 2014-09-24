@@ -138,7 +138,7 @@ public class Shoot : MonoBehaviour
     }
     else if (specialBeam != null && specialBeam.transform.localScale.y >= 0)
     {
-      specialBeam.transform.localScale -= new Vector3(0.4f, 0.4f, 0f);
+      specialBeam.transform.localScale -= new Vector3(0.3f, 0.3f, 0f);
       iTween.ShakePosition(specialBeam, iTween.Hash("x", 0.1f, "y", 0.1f, "z", 0.1f, "time", 0.25f));
 
       if (specialBeam != null && specialBeam.transform.localScale.y <= 0)
@@ -163,7 +163,7 @@ public class Shoot : MonoBehaviour
         mixPar = 0;
       }
     }
-    Debug.Log("mixpar is = " + mixPar);
+    //Debug.Log("mixpar is = " + mixPar);
 
     if (Input.GetKeyDown("p"))
       special = 100;

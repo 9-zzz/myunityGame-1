@@ -51,11 +51,16 @@ public class PickupCollisions : MonoBehaviour
       audio.PlayOneShot(dashPickUpSound);
       dashFX(other.gameObject.transform.position);
       GameObject.Find("Player").GetComponent<TP_Motor>().dashBar += 30;
-      GameObject.Find("Player").GetComponent<TP_Motor>().numOfJumps+= 2;
+      GameObject.Find("Player").GetComponent<TP_Motor>().numOfJumps += 2;
       Destroy(other.gameObject);
     }
-  }
 
+    if (other.CompareTag("goo"))
+    {
+      Debug.Log("wtf");
+      GameObject.Find("Player").GetComponent<TP_Motor>().playerHealth -= 1;
+    }
+  }
   /*void OnCollisionEnter(Collision collision)
   {
     if (collision.gameObject.tag == "ammodrop")
